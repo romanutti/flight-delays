@@ -2,17 +2,6 @@
 
 API for managing flight delay information.
 
-## Overview
-
-This project demonstrates Python development using GitHub Copilot. It uses the following technologies:
-
-- **FastAPI** for REST endpoints with automatic API documentation
-- **Uvicorn** as the ASGI web server
-- **Pydantic** for data validation
-- **pytest** for testing
-- **ruff** for linting and formatting
-- **uv** for modern package management with reproducible builds
-
 ## Project Structure
 
 ```text
@@ -29,34 +18,78 @@ flight-delays/
 ├── tests/                        # Test suite
 └── data/                         # Sample data
 ```
-
 ## Quick Start
 
 ### Prerequisites
 
 - Python 3.12 or higher
-- `uv` package manager 
-- GitHub Copilot in your IDE of choice, or the Copilot CLI: https://github.com/features/copilot/cli
+- Package manager [uv](https://docs.astral.sh/uv/getting-started/installation/)
+- Command runner [task](https://taskfile.dev/)
+- GitHub Copilot in your IDE of choice (e.g. [GitHub Copilot - Your AI Pair Programmer](https://plugins.jetbrains.com/plugin/17718-github-copilot--your-ai-pair-programmer) for PyCharm), or alternatively the [GitHub Copilot CLI](https://github.com/features/copilot/cli)
 
 ### Setup and Run
 
-Clone and navigate to the project:
-```bash
-cd flight-delays
-```
-
 Install dependencies:
 ```bash
-uv sync
+task setup
 ```
 
 Start the development server:
 ```bash
-uv run python -m uvicorn flight_delays_server:app --reload --app-dir src
+task run
 ```
 
 The API will be available at `http://localhost:8000` with Swagger UI at `http://localhost:8000/docs`.
 
-## License
+### Tasks
+[Task](https://taskfile.dev/) is used to run commands irrespective of the underlying OS.
 
-MIT License
+You can see the list of available commands by running:
+```bash
+task
+```
+
+## Exercises
+
+### LAB 1: Vibe Coding
+
+**Context:** We are going to build an application that displays flight delays. You are given an initial Python project that starts successfully but does not yet expose the required REST endpoints. Familiarize yourself with the repo using GitHub Copilot and implement the endpoints described below.
+
+**Task:** Implement the following endpoints:
+- `GET /delays` → returns 200 OK or 404 Not Found
+- `GET /delays/?airline_code=AA&limit=50` → returns 200 OK or 404 Not Found
+
+### LAB 2: Increasing Accuracy in a Probabilistic Solution Space
+
+**Context:** In this exercise, you will configure your project so GitHub Copilot produces more consistent and accurate outputs. Your goal is to reduce ambiguity and improve output quality.
+
+**Task:**
+- Create a repository instruction file defining general architecture conventions
+- Add path-specific instruction files for python and testing
+- Implement the same endpoints again:
+- `GET /delays` → returns 200 OK or 404 Not Found
+- `GET /delays/?airline_code=AA&limit=50` → returns 200 OK or 404 Not Found
+
+**Files to create:**
+- `.github/copilot-instructions.md`
+- `.github/instructions/rest.md`
+- `.github/instructions/tests.md`
+
+### LAB 3: Agentic Workflow
+
+**Context:** So far you've used Copilot to generate code directly. Now you will enforce an agentic workflow that separates refinement, planning, and implementation to improve quality and predictability.
+
+**Task:**
+- Prepare agents for refine → plan → implement in `.github/agents/`
+- Prepare a directory `.github/handoff/` to store handoff documents
+- Implement the same endpoints again using the workflow:
+- `GET /delays` → returns 200 OK or 404 Not Found
+- `GET /delays/?airline_code=AA&limit=50` → returns 200 OK or 404 Not Found
+
+**Files to create:**
+- `.github/agents/refine.md`
+- `.github/agents/plan.md`
+- `.github/agents/implement.md`
+
+### LAB 3: Agent Harness
+TODO: Implement agent harness using git hook

@@ -4,9 +4,6 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "flight-delays-api"
-authors = [
-    { name="Demo Project", email="demo@example.com" },
-]
 description = "REST API for managing flight delay information"
 readme = "README.md"
 requires-python = ">=3.12"

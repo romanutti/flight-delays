@@ -90,6 +90,3 @@ task
 - `.github/agents/refine.md`
 - `.github/agents/plan.md`
 - `.github/agents/implement.md`
-
-### LAB 3: Agent Harness
-TODO: Implement agent harness using git hook
